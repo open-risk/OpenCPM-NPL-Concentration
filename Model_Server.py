@@ -32,7 +32,7 @@ from rdflib.namespace import DC, FOAF
 
 from Compute import calculate
 
-SOURCE_DIR = '/home/philippos/Desktop/Dev_OpenSource/Model_Server/'
+SOURCE_DIR = '/path/to/the/source/code/here'
 
 from flask import Flask, request
 
