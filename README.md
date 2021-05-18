@@ -1,40 +1,50 @@
 ## OpenCPM Demo (Model Server)
 
-This Demo Model Server is a python/flask based server for exploring a simplified version of the Open Risk Models API.
+The **OpenCPM Demo Model Server** is a python/flask based server for exploring a simplified version of the [Open Risk API](https://www.openriskmanagement.com/open-risk-api/).
 
 
 ### Getting started
 
+The repo aims to provide a self-contained demo. 
+
+- Clone the repo in your local environment
+- Create a virtual environmennt
+- Install the dependencies
+- Install a model library
+- Startup a model server
+- Explore the endpoints
 
 #### Dependencies
 
-The server is based on the python flask framework. It has the following additional dependencies
+The server is based on the python flask framework. It has some additional dependencies (numpy, pandas, rdflib) that are easily installed with pip:
 
-- pip install requests
-- pip install json
-- pip install numpy
-- pip install pandas
-- pip install rdflib
-- pip install rdflib-jsonld
+```shell
+  pip install -r requirements.txt
+```
 
-#### Install a model library
+#### Installing a "model" library
 
-This demo is using a library of concentration risk measures. You can get a copy of the
-latest version here https://github.com/open-risk/concentration_library
+This demo is using a concentrationMetrics, a library of concentration risk measures. You can get a copy of the [latest version here](https://github.com/open-risk/concentrationMetrics)
 
-You only need to include the file concentration_library.py (for convenience we include it in this demo)
+* You only need to include the file model.py (for convenience we include it in this demo)
+* The list of available models is in model_list.rdf
+* The model metadata are stored in one rdf file per model (HHI_Index.rdf, Gini_Index.rdf etc)
 
-The model metadata are stored in one rdf file per model (HHI_Index.rdf etc)
 
-#### Startup the model server:
+#### Startup the model server
    	
-- Simply run the server script from the console (python model_server.py)
+Run the server script from the console
+
+```shell
+    python Model_Server.py
+```
+
 - The model server should startup on port http://127.0.0.1:5000/
-- You can check the server is live by pointing your browser to the port (you will get an json-ld reply)
-- or by using curl from the console (curl -v http://127.0.0.1:5000/)
+- You can check the server is live by pointing your browser to the port (you will get as a response a json-ld reply). 
   
-  
-#### Model Server API endpoints: 
+You can also query the API using curl from the console (curl -v http://127.0.0.1:5000/)
+
+#### Model Server API endpoints
 
 The general structure of the simplified API is
 
@@ -45,4 +55,4 @@ The general structure of the simplified API is
 The model name endpoint responds to both GET / PUT http verbs. In the first instance
 it returns model metadata. In the second instance it returns the model output
 
-The model metadata are in JSON-LD format. This is human readable with any JSON editor
+The model metadata are in JSON-LD format. This format is human readable and can be edited with any IDE / JSON editor

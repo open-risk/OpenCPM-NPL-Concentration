@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-# (c) 2017-2018 Open Risk, all rights reserved
+# (c) 2017-2021 Open Risk, all rights reserved
 #
 # Concentration Library is licensed under the MIT license a copy of which is included
 # in the source distribution of TransitionMatrix. This is notwithstanding any licenses of
@@ -32,7 +32,9 @@ from rdflib.namespace import DC, FOAF
 
 from Compute import calculate
 
-SOURCE_DIR = '/path/to/the/source/code/here'
+# You can insert another directory for model code here
+# SOURCE_DIR = '/path/to/the/source/code/here'
+SOURCE_DIR = os.path.dirname(__file__) + '/'
 
 from flask import Flask, request
 
